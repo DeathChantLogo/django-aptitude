@@ -11,70 +11,129 @@ QUESTION_TYPES = (
                     (4, "VersionScale"),
                  )
 
-__all__ = ['QuestionData', 'Session', 'RenderedQuestion']
+__all__ = ['QuestionData', 'AptSession', 'RenderedQuestion']
 
-class Session(models.Model):
+class AptSession(models.Model):
+    """
+    This model handles the testing session. It keeps track of how many questions
+    have been asked, and how many of them are correct. If the `time_ended`
+    attribute is null, the test is still in session, otherwise, the grade is
+    final.
+    """
+    
     user = models.ForeignKey('auth.User')
     user_index = models.IntegerField(default=1) #1st/2nd/3rd test they've taken
 
-    d_asked = models.IntegerField(default=0)
-    d_score = models.FloatField(default=0)
+    d_right = models.IntegerField(default=0)
+    d_wrong = models.IntegerField(default=0)
     
-    c_asked = models.IntegerField(default=0)
-    c_score = models.FloatField(default=0)
+    c_right = models.IntegerField(default=0)
+    c_wrong = models.IntegerField(default=0)
     
-    b_asked = models.IntegerField(default=0)
-    b_score = models.FloatField(default=0)
+    b_right = models.IntegerField(default=0)
+    b_wrong = models.IntegerField(default=0)
     
-    a_asked = models.IntegerField(default=0)    
-    a_score = models.FloatField(default=100)
+    a_right = models.IntegerField(default=0)
+    a_wrong = models.IntegerField(default=0)
+    a_score = models.IntegerField(default=100)
     
-    final_grade = models.CharField(max_length=3, blank=True)
+    final_grade = models.CharField(max_length=5, blank=True)
     
     time_started = models.DateTimeField(auto_now_add=True)
     time_ended = models.DateTimeField(blank=True, null=True)
     
     def __unicode__(self):
+        
         if not self.time_ended:
             return "%s - still in session" % self.user.username
+    
+        return "%s (%s) - %s" % (self.user.username, self.user_index,
+                                 self.final_grade)
+                                 
+    def increment_right_wrong(self, right_wrong, difficulty):
+        """
+        Save the status of the answer of a question as either being right or
+        wrong.
+        right_wrong = a string either "right" or "wrong"
+        difficulty = 'a1' or 'b' or 'c' or 'd' or 'a5', etc.
+        """
         
-        grade = self.final_grade
-        if grade == 'A':
-            grade = "%s-%s" % (self.final_grade, self.a_score)
+        letter = difficulty[0]
+        
+        if len(difficulty) == 1:
+            old = getattr(self, "%s_%s" % (letter.lower(), right_wrong))
+            setattr(self, "%s_%s" % (letter.lower(), right_wrong), old + 1)
             
-        return "%s (%s) - %s" % (self.user.username, self.user_index, grade)
+        elif right_wrong == 'wrong':
+            score = difficulty[1:]
+            self.a_score -= score
+        
+        self.save()
+        
+    
     
     def get_question_data(self):
         """
         Get the next QuestionData object to ask the user
         """
+        
         index = random.randint(0, QuestionData.objects.count() - 1)
         return QuestionData.objects.all()[index]
 
     def total_asked(self):
         """
-        Returns the total number of questions already asked
+        Returns the total number of questions already asked for this session
         """
         
-        return self.a_asked + self.b_asked + self.c_asked + self.d_asked
+        return (self.a_right + self.b_right + self.c_right + self.d_right +
+                self.a_wrong + self.b_wrong + self.c_wrong + self.d_wrong)
 
+    def calc_final_grade(self):
+        return "not implemented yet"
 
+    def get_final_grade(self):
+        """
+        Returns the grade for this session, if it isn't already set, it will
+        calculate it and then save the results.
+        """
+        
+        if self.final_grade:
+            return self.final_grade
+        
+        if not self.time_ended:
+            self.final_grade = self.calc_final_grade()
+            self.save()
+            return self.final_grade
+        
+        return "N/A"
+        
 class QuestionData(models.Model, RenderMixin):
+    """
+    Raw question data. Used to define each question that will be asked.
+    """
+    
     text = models.TextField()
     choices = models.TextField()
     type = models.IntegerField(choices=QUESTION_TYPES)
     difficulty = models.CharField(max_length=3)
     
     def __unicode__(self):
-        return self.text
+        return "%s - %s" % (self.text, self.get_type_display())
 
 
 class RenderedQuestion(models.Model):
+    """
+    A QuestionData instance that has been rendered into HTML. Each rendering
+    has it's choices shuffled and sometimes even varying question test and
+    number of choices. Each instance has attached to it the correct answer
+    for later grading.
+    """
+    
     html = models.TextField()
     correct_choice = models.CharField(max_length=1)
     answered_choice = models.CharField(max_length=1)
-    session = models.ForeignKey('session')
-    data = models.ForeignKey('questiondata')
+    aptsession = models.ForeignKey('AptSession')
+    data = models.ForeignKey('QuestionData')
     
     def __unicode__(self):
         correct = self.correct_choice == self.answered_choice

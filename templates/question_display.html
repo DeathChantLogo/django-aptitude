@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %}Session #{{ session.pk }}{% endblock %}
+
 {% block content %}
-{{ session.total_asked }}
+#{{ session.total_asked }}
+<hr>
 <form action="{% url answer rq.pk %}" method="post">
     {% csrf_token %}
     {{rq.html|safe}}

@@ -4,6 +4,7 @@ from django.db.models import get_model
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe as ms
 from django.template.defaultfilters import escape, linebreaksbr
+
 class RenderMixin(object):
     
     def render(self, session, difficulty=None):
@@ -26,13 +27,13 @@ class RenderMixin(object):
         # snippet type question
         space2br = 'snippet' not in parsed['type']
         
-        
-        # shuffle all the choices
+        # shuffle all the choices, right and wrong
         choices = parsed['wrong'] + parsed['right']
         random.shuffle(choices)
         
         html = render_to_string('question_render.html',
-                               {'choices': choices, 'question_text': self.text})
+                               {'choices': choices,
+                                'question_text': self.text})
         
         # figure out which one of the choices will be the correct answer
         choice_letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m']
@@ -43,7 +44,7 @@ class RenderMixin(object):
             if choice == parsed['right'][0]:
                 correct_choice_letter = letter
         
-        rq = RenderedQuestion(session=session, html=html,
+        rq = RenderedQuestion(aptsession=session, html=html,
                               correct_choice=correct_choice_letter,
                               data=self)
         rq.save()

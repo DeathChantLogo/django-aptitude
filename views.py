@@ -1,12 +1,12 @@
 from main.decorators import render_to
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from models import *
+from models import AptSession, RenderedQuestion
 
 
 @render_to('question_display.html')
 def question(request, session_pk):
-    session = Session.objects.get(pk=session_pk)
+    session = AptSession.objects.get(pk=session_pk)
     
     rq = session.get_question_data().render(session)
 
@@ -20,17 +20,14 @@ def answer(request, rendered_pk):
     """
     
     rq = RenderedQuestion.objects.get(pk=rendered_pk)
-    session = rq.session
+    session = rq.aptsession
     
     answer = request.POST['choice']
-    right = rq.grade(answer)
+    right_wrong = "right" if rq.grade(answer) else "wrong"
     difficulty = rq.data.difficulty
-    letter = difficulty[0] # the difficulty can either be F/D/C. etc or A##
     
     #incriment the total number of questions asked for this difficulty.
-    asked = getattr(session, letter.lower() + "_asked")
-    setattr(session, letter.lower() + "_asked", asked + 1)
-    session.save()
+    session.increment_right_wrong(right_wrong, difficulty)
     
     url = reverse('question', args=[session.pk])
     return HttpResponseRedirect(url)
@@ -46,11 +43,12 @@ def start_session(request):
     Create a session, and then get started!
     """
 
-    if Session.objects.filter(user=request.user, time_ended__isnull=True).exists():
+    if AptSession.objects.filter(user=request.user, time_ended__isnull=True).exists():
         return None
     
-    session = Session(user=request.user)
+    session = AptSession(user=request.user)
     session.save()
     
+    # go to the first question
     url = reverse('question', args=[session.pk])
     return HttpResponseRedirect(url)

@@ -4,8 +4,8 @@
         "model": "aptitude.questiondata", 
         "fields": {
             "text": "Which of the following data types is NOT part of the collections module?", 
-            "type": 1,  
             "difficulty": "B", 
+            "type": 1, 
             "choices": "<c>tuple\r\ndeque\r\nOrderedDict\r\ndefaultdict\r\n"
         }
     }, 
@@ -14,8 +14,8 @@
         "model": "aptitude.questiondata", 
         "fields": {
             "text": "Which one of these modules has been the most recently added to the standard library?", 
-            "type": 4, 
             "difficulty": "A", 
+            "type": 4, 
             "choices": "argparse\r\nmultiprocessing, ssl, json, fractions\r\nfunctools, hashlib\r\ncollections\r\ncsv, timeit, pickeltools, optparse\r\ntkinter\r\nzipfile\r\nshutil, pdb, random, StringIO"
         }
     }, 
@@ -24,8 +24,8 @@
         "model": "aptitude.questiondata", 
         "fields": {
             "text": "Which of the following language features has been most recently added to python?", 
-            "type": 4, 
             "difficulty": "A", 
+            "type": 4, 
             "choices": "{} for set;;multiple context managers in one with statement\r\nstring .format() method;;with statement;;except TypeError as exc:;;class decorators\r\nx = true_value if condition else false_value\r\n'@' function decorator syntax"
         }
     }, 
@@ -34,8 +34,8 @@
         "model": "aptitude.questiondata", 
         "fields": {
             "text": "Which snippet below is Python:", 
-            "type": 5,  
             "difficulty": "D", 
+            "type": 5, 
             "choices": "def func(x, y):\r\n    return x * y\r\n----\r\nint func(int x, int y) {\r\n    return x * y;\r\n}\r\n----\r\n(define func (lambda (x y)  (* x y)))"
         }
     }, 
@@ -44,9 +44,249 @@
         "model": "aptitude.questiondata", 
         "fields": {
             "text": "A lambda in Python is:", 
-            "type": 1,  
             "difficulty": "C", 
+            "type": 1, 
             "choices": "<c>used to define small one-line functions\r\na cleaner syntax for defining recursive functions\r\nrequired to create a function within a function"
+        }
+    }, 
+    {
+        "pk": 104, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "At the language level, each level of indentation in python must always be:", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "it doesn't matter as long as it's consistent across the block\r\nit doesn't matter as long as it's consistent across the file\r\n2 spaces\r\n4 spaces\r\n1 tab"
+        }
+    }, 
+    {
+        "pk": 106, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "How do you include 3rd party modules in python?", 
+            "difficulty": "D", 
+            "type": 1, 
+            "choices": "`import package` before using it\r\n`include \"path/to/package\"` before using it\r\n`require \"package\"` before using it\r\njust use the package in your code and it will just work as long as the package is installed on your system"
+        }
+    }, 
+    {
+        "pk": 108, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following is not an iterable object?", 
+            "difficulty": "D", 
+            "type": 1, 
+            "choices": "int\r\nstring\r\ntuple\r\nlist\r\ndictionary"
+        }
+    }, 
+    {
+        "pk": 110, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Syntactically, which is _either_ the only one of the below that _is_ valid, _or_ the only one below that is _not_ valid?:", 
+            "difficulty": "C", 
+            "type": 5, 
+            "choices": "def func(a=1, b=3):\r\n    return a + b\r\n----\r\ndef func(a, b=56):\r\n    return a + b\r\n----\r\ndef func(a=56, b):\r\n    return a + b\r\n----\r\ndef func(a, b):\r\n    return a ** b"
+        }
+    }, 
+    {
+        "pk": 112, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which is the correct syntax in python for throwing/raising an exception?", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "`raise Exception`\r\n`throw Exception`\r\n`except Exception`"
+        }
+    }, 
+    {
+        "pk": 114, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What are PEPs?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "Documents that are proposals for new features and/or enhancements to the python ecosystem\r\nFormal documentation of the internals of the python interpreter\r\nNews stories published by the python foundation relating to various happenings of the python world"
+        }
+    }, 
+    {
+        "pk": 116, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "According to PEP8, how should indentation be handled?", 
+            "difficulty": "A10", 
+            "type": 1, 
+            "choices": "always 4 spaces per indentation level\r\nalways 1 tab per indentation level\r\nPEP8 makes no mention of indentation"
+        }
+    }, 
+    {
+        "pk": 118, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "According to PEP8, how should classes be named?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "CapCase\r\ncamelCase\r\nunder_scores\r\nPEP8 does not specify"
+        }
+    }, 
+    {
+        "pk": 120, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is PEP7?", 
+            "difficulty": "A6", 
+            "type": 1, 
+            "choices": "Like PEP8 but for C extensions\r\nThere is no PEP7, that number was withdrawn\r\nA document that outlines the process for adding new modules to the standard library"
+        }
+    }, 
+    {
+        "pk": 122, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What does it mean if the PEP number is larger that 3000?", 
+            "difficulty": "A5", 
+            "type": 1, 
+            "choices": "It relates to Python 3\r\nNo special meaning\r\nit was approved in the 3rd year after the PEP system was put into place"
+        }
+    }, 
+    {
+        "pk": 124, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What does it mean if the PEP number is between 250 and 259?", 
+            "difficulty": "A8", 
+            "type": 1, 
+            "choices": "It relates to Python 2.5\r\nNo special meaning\r\nit was approved in the 2nd year and 5th month after the PEP system was put into place"
+        }
+    }, 
+    {
+        "pk": 126, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following best describes the Django project?", 
+            "difficulty": "A8", 
+            "type": 1, 
+            "choices": "A popular 3rd party web framework\r\nA set of specifications that all Python web frameworks are encouraged to abide by\r\nA lightweight, yet popular web framework that is part of the standard library"
+        }
+    }, 
+    {
+        "pk": 128, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following is either the only one that is correct, or the only one that is not correct syntax for doing multiple inheritance?", 
+            "difficulty": "B", 
+            "type": 5, 
+            "choices": "class MyClass(Class1, Class2, Class3):\r\n    ...\r\n---    \r\nclass MyClass extends (Class1, Class2, Class3):\r\n    ...\r\n---\r\nclass MyClass:\r\n    __extends__ = [Class1, Class2, Class3]\r\n    ..."
+        }
+    }, 
+    {
+        "pk": 130, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following is the most common way pythonistas pronounce names that begin and end with\r\na double underscore such as \"__import__\"?", 
+            "difficulty": "A2", 
+            "type": 1, 
+            "choices": "\"dunder import\"\r\n\"dubunder import\"\r\n\"double down import\"\r\n\"underscore underscore import underscore underscore\""
+        }
+    }, 
+    {
+        "pk": 132, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which exception is raised by the following snippet: `{\"first\": 1, \"second\": 2}[\"third\"]`", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "KeyError\r\nValueError\r\nRuntimeError\r\nSyntaxError\r\nDictError"
+        }
+    }, 
+    {
+        "pk": 134, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which exception is raised by the following snippet:\r\n\r\n<pre>\r\nd = {\"first\": 1, \"second\": 2}\r\nif d[\"first\"] == 1\r\n    print \"yes!\"\r\n</pre>", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "ValueError\r\nKeyError\r\nRuntimeError\r\nSyntaxError\r\nDictError"
+        }
+    }, 
+    {
+        "pk": 136, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "list comprehensions, set comprehensions, generator comprehensions, and dictionary comprehensions are best described as:", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "a consise way to create interable objects with one statement\r\nall the behaviors that lists, sets, generators, and dictionaries display when they are iterated over\r\nAn alternate syntax only available in python 3 for creating list, set, generator, and dictionary objects."
+        }
+    }, 
+    {
+        "pk": 138, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "A set is:", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "A group of objects that are guaranteed to not have duplicates\r\nA generic term for data structures in python that represent a group of objects\r\nA group of objects that are stored in a special way as to be faster than other (list, tuple) iterable objects."
+        }
+    }, 
+    {
+        "pk": 140, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "In the following snippet, which is the correct output?\r\n\r\nfor char in \"ch\":\r\n    print(type(char))", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "<type 'str'><type 'str'>\r\n<type 'char'><type 'char'>\r\n<type 'iterator'><type 'iterator'>"
+        }
+    }, 
+    {
+        "pk": 142, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is the dir() built-in used for?", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "getting a list of all attributes and methods of an object\r\ndisplaying the contents of a file path\r\nnothing, there is no dir() built-in."
+        }
+    }, 
+    {
+        "pk": 144, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "what is the see() built-in used for?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "getting a list of all attributes/methods of an object\r\ngetting the memory usage of an object\r\nnothing, there is no see() built-in."
+        }
+    }, 
+    {
+        "pk": 146, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "which snippet uses the least memory (in python 2.x)?", 
+            "difficulty": "B", 
+            "type": 5, 
+            "choices": "for a in (x for x in xrange(20000)):\r\n    if x < 9:\r\n        print a\r\n    else:\r\n        break\r\n----    \r\nfor a in [x for x in xrange(20000)]:\r\n    if x < 9:\r\n        print a\r\n    else:\r\n        break\r\n----\r\nfor a in range(20000):\r\n    if x < 9:\r\n        print a\r\n    else:\r\n        break"
+        }
+    }, 
+    {
+        "pk": 148, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which version of python is this snippet NOT valid?\r\n(Note: without using any kind of `from __future__ import ...`?\r\n\r\nfor a in ['apple', 'bottom', 'jeans']:\r\n    print(a)", 
+            "difficulty": "A", 
+            "type": 4, 
+            "choices": "<2.6"
+        }
+    }, 
+    {
+        "pk": 151, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "which of the standard lib modules listed below is _NOT_ primarily used for either finding, editing or otherwise dealing with filesystem paths and files?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "io\r\nglob\r\nos\r\nshutil\r\n"
         }
     }
 ]
