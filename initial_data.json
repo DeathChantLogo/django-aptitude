@@ -1,0 +1,52 @@
+[
+    {
+        "pk": 38, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following data types is NOT part of the collections module?", 
+            "type": 1,  
+            "difficulty": "B", 
+            "choices": "<c>tuple\r\ndeque\r\nOrderedDict\r\ndefaultdict\r\n"
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which one of these modules has been the most recently added to the standard library?", 
+            "type": 4, 
+            "difficulty": "A", 
+            "choices": "argparse\r\nmultiprocessing, ssl, json, fractions\r\nfunctools, hashlib\r\ncollections\r\ncsv, timeit, pickeltools, optparse\r\ntkinter\r\nzipfile\r\nshutil, pdb, random, StringIO"
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following language features has been most recently added to python?", 
+            "type": 4, 
+            "difficulty": "A", 
+            "choices": "{} for set;;multiple context managers in one with statement\r\nstring .format() method;;with statement;;except TypeError as exc:;;class decorators\r\nx = true_value if condition else false_value\r\n'@' function decorator syntax"
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which snippet below is Python:", 
+            "type": 5,  
+            "difficulty": "D", 
+            "choices": "def func(x, y):\r\n    return x * y\r\n----\r\nint func(int x, int y) {\r\n    return x * y;\r\n}\r\n----\r\n(define func (lambda (x y)  (* x y)))"
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "A lambda in Python is:", 
+            "type": 1,  
+            "difficulty": "C", 
+            "choices": "<c>used to define small one-line functions\r\na cleaner syntax for defining recursive functions\r\nrequired to create a function within a function"
+        }
+    }
+]

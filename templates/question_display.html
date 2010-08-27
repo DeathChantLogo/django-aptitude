@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ session.total_asked }}
+<form action="{% url answer rq.pk %}" method="post">
+    {% csrf_token %}
+    {{rq.html|safe}}
+    <input type="submit">
+</form>
+{% endblock %}
