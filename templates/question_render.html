@@ -1,18 +1,19 @@
 <div class="wrapper">
-    <div class="question_text">{{ question_text }}</div>
+    <div class="question_text">{{ question_text|safe }}</div>
     <div class="choices">
-        <ol type="A">
+        <table>
             {% for choice in choices %}
             <!-- {% cycle 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h' 'i' 'j' as l %} -->
-            <li class="{{ letter }}">
-                <div class="box">
+            <tr class="{{ letter }}">
+                <td class="box">
                     <input value="{{ l }}" id="{{ l }}" name="choice" type="radio">
-                </div>
-                <div class="choice">
+                </td>
+                <td class="choice">
                     <label for="{{ l }}">{{ choice|safe }}</label>
-                </div>
-            </li>
+                </td>
+            </tr>
             {% endfor %}
-        </ol>
+        </table>
+        <input type="submit" value="Answer">
     </div>
 </div>

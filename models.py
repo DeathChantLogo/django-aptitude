@@ -1,6 +1,8 @@
 import random
 
 from django.db import models
+from django.conf import settings
+
 from question_render import RenderMixin
 
 QUESTION_TYPES = (
@@ -8,7 +10,7 @@ QUESTION_TYPES = (
                     (5, "SnippetRegular"),
                     (2, "DownScale"),
                     (3, "TimeScale"),
-                    (4, "VersionScale"),
+                    (4, "PythonVersion"),
                  )
 
 __all__ = ['QuestionData', 'AptSession', 'RenderedQuestion']
@@ -65,17 +67,20 @@ class AptSession(models.Model):
             setattr(self, "%s_%s" % (letter.lower(), right_wrong), old + 1)
             
         elif right_wrong == 'wrong':
-            score = difficulty[1:]
+            score = int(difficulty[1:])
             self.a_score -= score
         
         self.save()
-        
     
     
     def get_question_data(self):
         """
-        Get the next QuestionData object to ask the user
+        Get the next QuestionData object to ask the user. Returns None if the
+        test is completed.
         """
+        
+        if self.total_asked() >= settings.TOTAL_QUESTION_COUNT:
+            return None
         
         index = random.randint(0, QuestionData.objects.count() - 1)
         return QuestionData.objects.all()[index]
@@ -114,7 +119,7 @@ class QuestionData(models.Model, RenderMixin):
     
     text = models.TextField()
     choices = models.TextField()
-    type = models.IntegerField(choices=QUESTION_TYPES)
+    type = models.IntegerField(choices=QUESTION_TYPES, default=1)
     difficulty = models.CharField(max_length=3)
     
     def __unicode__(self):

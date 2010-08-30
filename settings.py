@@ -7,6 +7,9 @@ C_QUESTIONS_COUNT = 15
 B_QUESTIONS_COUNT = 25
 A_QUESTIONS_COUNT = 50
 
+TOTAL_QUESTION_COUNT = D_QUESTIONS_COUNT + C_QUESTIONS_COUNT + \
+                       B_QUESTIONS_COUNT + A_QUESTIONS_COUNT
+
 # The total number of questions you can get wrong per difficulty level in order
 # to achieve that grade. First value: questions you can miss in the previous
 # difficulty level. The second number means how many you can miss in the

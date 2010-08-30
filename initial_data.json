@@ -43,7 +43,7 @@
         "pk": 46, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "A lambda in Python is:", 
+            "text": "A ``lambda`` in Python is:", 
             "difficulty": "C", 
             "type": 1, 
             "choices": "<c>used to define small one-line functions\r\na cleaner syntax for defining recursive functions\r\nrequired to create a function within a function"
@@ -64,9 +64,9 @@
         "model": "aptitude.questiondata", 
         "fields": {
             "text": "How do you include 3rd party modules in python?", 
-            "difficulty": "D", 
+            "difficulty": "C", 
             "type": 1, 
-            "choices": "`import package` before using it\r\n`include \"path/to/package\"` before using it\r\n`require \"package\"` before using it\r\njust use the package in your code and it will just work as long as the package is installed on your system"
+            "choices": "``import package`` before using it\r\n``include \"path/to/package\"`` before using it\r\n``require \"package\"`` before using it\r\njust use the package in your code and it will just work as long as the package is installed on your system"
         }
     }, 
     {
@@ -83,7 +83,7 @@
         "pk": 110, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "Syntactically, which is _either_ the only one of the below that _is_ valid, _or_ the only one below that is _not_ valid?:", 
+            "text": "Syntactically, which is **either** the only one of the below that **is** valid, **or** the only one below that is **not** valid?:", 
             "difficulty": "C", 
             "type": 5, 
             "choices": "def func(a=1, b=3):\r\n    return a + b\r\n----\r\ndef func(a, b=56):\r\n    return a + b\r\n----\r\ndef func(a=56, b):\r\n    return a + b\r\n----\r\ndef func(a, b):\r\n    return a ** b"
@@ -96,7 +96,7 @@
             "text": "Which is the correct syntax in python for throwing/raising an exception?", 
             "difficulty": "C", 
             "type": 1, 
-            "choices": "`raise Exception`\r\n`throw Exception`\r\n`except Exception`"
+            "choices": "``raise Exception``\r\n``throw Exception``\r\n``except Exception``"
         }
     }, 
     {
@@ -173,7 +173,7 @@
         "pk": 128, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "Which of the following is either the only one that is correct, or the only one that is not correct syntax for doing multiple inheritance?", 
+            "text": "Which of the following is **either** the only one that **is** correct, **or** the only one that is **not** correct syntax for doing multiple inheritance?", 
             "difficulty": "B", 
             "type": 5, 
             "choices": "class MyClass(Class1, Class2, Class3):\r\n    ...\r\n---    \r\nclass MyClass extends (Class1, Class2, Class3):\r\n    ...\r\n---\r\nclass MyClass:\r\n    __extends__ = [Class1, Class2, Class3]\r\n    ..."
@@ -183,7 +183,7 @@
         "pk": 130, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "Which of the following is the most common way pythonistas pronounce names that begin and end with\r\na double underscore such as \"__import__\"?", 
+            "text": "Which of the following is the most common way pythonistas pronounce names that begin and end with\r\na double underscore such as ``__import__``?", 
             "difficulty": "A2", 
             "type": 1, 
             "choices": "\"dunder import\"\r\n\"dubunder import\"\r\n\"double down import\"\r\n\"underscore underscore import underscore underscore\""
@@ -193,7 +193,7 @@
         "pk": 132, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "Which exception is raised by the following snippet: `{\"first\": 1, \"second\": 2}[\"third\"]`", 
+            "text": "Which exception is raised by the following snippet: ``{\"first\": 1, \"second\": 2}[\"third\"]``", 
             "difficulty": "C", 
             "type": 1, 
             "choices": "KeyError\r\nValueError\r\nRuntimeError\r\nSyntaxError\r\nDictError"
@@ -203,7 +203,7 @@
         "pk": 134, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "Which exception is raised by the following snippet:\r\n\r\n<pre>\r\nd = {\"first\": 1, \"second\": 2}\r\nif d[\"first\"] == 1\r\n    print \"yes!\"\r\n</pre>", 
+            "text": "Which exception is raised by the following snippet:\r\n\r\n    d = {\"first\": 1, \"second\": 2}\r\n    if d[\"first\"] == 1\r\n        print \"yes!\"", 
             "difficulty": "C", 
             "type": 1, 
             "choices": "ValueError\r\nKeyError\r\nRuntimeError\r\nSyntaxError\r\nDictError"
@@ -233,30 +233,30 @@
         "pk": 140, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "In the following snippet, which is the correct output?\r\n\r\nfor char in \"ch\":\r\n    print(type(char))", 
+            "text": "In the following snippet, which is the correct output?\r\n\r\n    for char in \"ch\":\r\n        print(type(char))", 
             "difficulty": "C", 
             "type": 1, 
-            "choices": "<type 'str'><type 'str'>\r\n<type 'char'><type 'char'>\r\n<type 'iterator'><type 'iterator'>"
+            "choices": "\\<type 'str'>\\<type 'str'>\r\n\\<type 'char'>\\<type 'char'>\r\n\\<type 'iterator'>\\<type 'iterator'>"
         }
     }, 
     {
         "pk": 142, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "What is the dir() built-in used for?", 
+            "text": "What is the ``dir()`` built-in used for?", 
             "difficulty": "C", 
             "type": 1, 
-            "choices": "getting a list of all attributes and methods of an object\r\ndisplaying the contents of a file path\r\nnothing, there is no dir() built-in."
+            "choices": "getting a list of all attributes and methods of an object\r\ndisplaying the contents of a file path\r\nnothing, there is no ``dir()`` built-in."
         }
     }, 
     {
         "pk": 144, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "what is the see() built-in used for?", 
+            "text": "what is the ``see()`` built-in used for?", 
             "difficulty": "B", 
             "type": 1, 
-            "choices": "getting a list of all attributes/methods of an object\r\ngetting the memory usage of an object\r\nnothing, there is no see() built-in."
+            "choices": "getting a list of all attributes/methods of an object\r\ngetting the memory usage of an object\r\nnothing, there is no ``see()`` built-in."
         }
     }, 
     {
@@ -273,7 +273,7 @@
         "pk": 148, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "Which version of python is this snippet NOT valid?\r\n(Note: without using any kind of `from __future__ import ...`?\r\n\r\nfor a in ['apple', 'bottom', 'jeans']:\r\n    print(a)", 
+            "text": "Which version of python is this snippet NOT valid?\r\n(Note: without using any kind of ``from __future__ import ...``)?\r\n\r\n    for a in ['apple', 'bottom', 'jeans']:\r\n        print(a)", 
             "difficulty": "A", 
             "type": 4, 
             "choices": "<2.6"
@@ -283,10 +283,510 @@
         "pk": 151, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "which of the standard lib modules listed below is _NOT_ primarily used for either finding, editing or otherwise dealing with filesystem paths and files?", 
+            "text": "Which of the standard lib modules listed below is **NOT** primarily used for either finding, editing or otherwise dealing with filesystem paths and files?", 
             "difficulty": "B", 
             "type": 1, 
             "choices": "io\r\nglob\r\nos\r\nshutil\r\n"
+        }
+    }, 
+    {
+        "pk": 427, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Python's author was heavily influenced when creating python by which language?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "abc\r\nscheme\r\nfortran\r\nbefudge"
+        }
+    }, 
+    {
+        "pk": 429, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "When were warnings first introduced in python?", 
+            "difficulty": "A", 
+            "type": 4, 
+            "choices": "2.1"
+        }
+    }, 
+    {
+        "pk": 431, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Whats the difference between these two classes (python 2.2+)?\r\n\r\n    class Firstclass:\r\n        pass\r\n    \r\n    class SecondClass(object):\r\n        pass", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "the second class is \"new-style\" and acts slightly different\r\nnothing, the first example is an implicit version of the second\r\nthe first snippet is a syntax error"
+        }
+    }, 
+    {
+        "pk": 434, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which statement correctly describes the BeautifulSoup project", 
+            "difficulty": "A6", 
+            "type": 1, 
+            "choices": "A 3rd party HTML parsing library\r\nA library thats part of the standard lib\r\nA 3rd party HTML rendering engine"
+        }
+    }, 
+    {
+        "pk": 436, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which statement best describes the Sphinx project?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "A tool used to aide in creating documentation for python modules\r\nAn HTML rendering Engine\r\nA tool for creating GUIs"
+        }
+    }, 
+    {
+        "pk": 438, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Python itself is licensed under", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "The BSD License\r\nVersion 2.0 of the GPL\r\nVersion 2.0 of the Apache License\r\nA highly custom license that resembles no other license"
+        }
+    }, 
+    {
+        "pk": 440, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "The Python logo and source code is owned by:", 
+            "difficulty": "A10", 
+            "type": 1, 
+            "choices": "Guido van Rossum\r\n<c>The Python Software Foundation\r\nThe Free Software Foundation\r\nNobody - Python's intellectual property is in the public domain"
+        }
+    }, 
+    {
+        "pk": 442, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Is python...", 
+            "difficulty": "D", 
+            "type": 1, 
+            "choices": "An interpreted language\r\nA compiled language\r\nNeither"
+        }
+    }, 
+    {
+        "pk": 444, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Porting from Python 2.x code to 3.x", 
+            "difficulty": "D", 
+            "type": 1, 
+            "choices": "is difficult and a huge overtaking in most cases\r\nis fairly trivial in most cases\r\nhappens automatically at runtime\r\n"
+        }
+    }, 
+    {
+        "pk": 447, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following is **not** a Python web framework", 
+            "difficulty": "A8", 
+            "type": 1, 
+            "choices": "Grails\r\nTurboGears\r\nDjango\r\nPylons\r\nweb.py"
+        }
+    }, 
+    {
+        "pk": 449, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which statement is equivalent to this snippet?\r\n\r\n    [str(x) for x in list]", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "``map(str, list)``\r\n``filter(str, list)``\r\n``zip(str, list)``"
+        }
+    }, 
+    {
+        "pk": 451, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is the name of the current Postgres library for Python?", 
+            "difficulty": "A2", 
+            "type": 1, 
+            "choices": "psycopg2\r\npsql\r\npsycopg3"
+        }
+    }, 
+    {
+        "pk": 453, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Python is...", 
+            "difficulty": "D", 
+            "type": 1, 
+            "choices": "An Object-Oriented programming language\r\nA purely functional programming language\r\nBoth purely functional and Object-Oriented"
+        }
+    }, 
+    {
+        "pk": 463, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "How does the ``len()`` built-in function work internally?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "It calls ``__len__()`` on the passed in object and returns the results\r\nIt iterates over the passed in object and returns the number of iterations it went through\r\nIt introspects the passed in object's memory map to measure the length of the object"
+        }
+    }, 
+    {
+        "pk": 465, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "In python 2.x, what is the difference between ``range()`` and ``xrange()``?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "``xrange()`` returns a generator, ``range()`` returns a list\r\nThey work the same, the only difference is their internal implementation\r\n``xrange()`` has some extra features that would have broken ``range()``'s backwards compatibility."
+        }
+    }, 
+    {
+        "pk": 467, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What does the ``self`` built-in object do?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "There is no ``self`` built-in object\r\nIt is used in instance method definitions to reference the instance object itself\r\nNothing, it is mainly used as a placeholder"
+        }
+    }, 
+    {
+        "pk": 469, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "To access an attribute on an object, the following syntax is used:", 
+            "difficulty": "D", 
+            "type": 1, 
+            "choices": "``object.attribute``\r\n``object->attribute``\r\n``object::attribute``"
+        }
+    }, 
+    {
+        "pk": 471, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "The following syntax is valid (Python 2.x):\r\n\r\n    if value = get_value():\r\n        print value", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "False\r\nTrue"
+        }
+    }, 
+    {
+        "pk": 473, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following is an example of how assignment in python is done?", 
+            "difficulty": "D", 
+            "type": 1, 
+            "choices": "``value = 1``\r\n``value := 1``\r\n``value == 1``\r\n``value 1``"
+        }
+    }, 
+    {
+        "pk": 475, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is the string called in the following snippet?\r\n\r\n    def square(x):\r\n        \"This string here\"\r\n    \r\n        return x * x", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "A docstring\r\nNo special name\r\nA typestring\r\nA function identifier"
+        }
+    }, 
+    {
+        "pk": 477, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is the difference between the single quotation mark (``'``) and double quotation marks (``\"``) when defining string literals?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "Both double and single quotes behave exactly the same\r\nDouble quotes does variable translation, single quotes does not\r\nDouble quotes always create unicode objects, single quotes always return ASCII-encoded string objects.\r\nDouble quotes can contain un-escaped line breaks, single quotes can not."
+        }
+    }, 
+    {
+        "pk": 479, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which snippet gets the current date and time?", 
+            "difficulty": "B", 
+            "type": 5, 
+            "choices": "import datetime\r\nprint datetime.datetime.now()\r\n------\r\nimport datetime\r\nprint datetime.datetime.get_current_time()\r\n------\r\nimport datetime\r\nprint datetime.now()"
+        }
+    }, 
+    {
+        "pk": 481, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Why is it generally more safe to use ``eval`` in lieu of ``exec`` when possible on input derived directly from user input?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "``eval`` is restricted to only evaluating and returning expressions, and it is impossible for an expression to harm the underlying system.\r\nIt doesn't make any difference, ``exec`` and ``eval`` are equally unsafe when dealing with direct user input.\r\n``eval`` strips out certain keywords and built-ins to prevent it from evaluating harmful code."
+        }
+    }, 
+    {
+        "pk": 483, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "The following snippet has what output?\r\n\r\n    \"abcedfg\"[3:*]", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "``SyntaxError``\r\n\"edfg\"\r\n\"abc\""
+        }
+    }, 
+    {
+        "pk": 485, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What does the 'L' stand for in the following snippet?\r\n\r\n    >>> obj.get_value()\r\n    562L", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "It is of the ``long`` type\r\nIt is of the ``Long`` type\r\nIt is of the ``LongInt`` type\r\n\r\n"
+        }
+    }, 
+    {
+        "pk": 487, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which best describes the ``<>`` operator?", 
+            "difficulty": "A3", 
+            "type": 1, 
+            "choices": "An alternate way to write \"!=\" in Python 2.x\r\nThe new and recommended way to write \"!=\" in Python 3.x\r\nAn operator thatdoes not exist in either 2.x or 3.x\r\n"
+        }
+    }, 
+    {
+        "pk": 489, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following is the fastest and most pythonic?", 
+            "difficulty": "B", 
+            "type": 5, 
+            "choices": "if potential_url.startswith('http:')\r\n    print \"yes\"\r\n-----\r\nimport re\r\nif re.match(r\"^http:\", potential_url):\r\n    print \"yes!\"\r\n------\r\nif potential_url.beginswith('http:')\r\n    print \"yes\"\r\n------\r\nif potential_url[:5] == 'http:'\r\n    print \"yes\""
+        }
+    }, 
+    {
+        "pk": 518, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which exception is raised by the following snippet?\r\n\r\n    number = 56\r\n    print \"the value is \" + number", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "TypeError\r\nNo exception, that is valid code\r\nSyntaxError\r\nRuntimeError\r\nValueError"
+        }
+    }, 
+    {
+        "pk": 643, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which best describes the ``:=`` operator?", 
+            "difficulty": "A10", 
+            "type": 1, 
+            "choices": "An operator which does not exist in either Python 2.x or 3.x\r\nAn archaic assignment operator from versions prior to 2.2\r\nAn equality operator that checks memory location rather than value"
+        }
+    }, 
+    {
+        "pk": 661, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "How do you add up the numbers in a list?", 
+            "difficulty": "B", 
+            "type": 5, 
+            "choices": "sum([1,2,3,4,5])\r\n-----\r\nimport math\r\nmath.sum([1,2,3,4,5])\r\n-----\r\n[1,2,3,4,5].sum()"
+        }
+    }, 
+    {
+        "pk": 665, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following is a valid way to set the value of an object attribute that does not currently exist?", 
+            "difficulty": "B", 
+            "type": 5, 
+            "choices": "setattr(obj, 'attribute', value)\r\nobj.attribute = value\r\nsetattr(obj, 'attribute', value, create=True)"
+        }
+    }, 
+    {
+        "pk": 667, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which is the correct, and **most Pythonic** way to modify an already-existing attribute of an object?\r\n\r\n    >>> obj = SomeClass()\r\n    >>> obj.attribute\r\n    \"hi everyone!\"", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "obj.attribute = \"new_value\"\r\nsetattr(obj, \"attribute\", \"new value\")\r\nobj.attribute.set(\"new_value\")"
+        }
+    }, 
+    {
+        "pk": 669, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Given the snippet below, which output should be valid?\r\n\r\n    value = (\"1\", )\r\n    print type(value)", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "\\<type 'tuple'\\>\r\nSyntaxError\r\n\\<type 'str'\\>\r\n\\<type 'char'\\>"
+        }
+    }, 
+    {
+        "pk": 671, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is the output of this snippet?\r\n\r\n    >>> True + 1", 
+            "difficulty": "A3", 
+            "type": 1, 
+            "choices": "2\r\nTypeError\r\n1\r\n\"True1\""
+        }
+    }, 
+    {
+        "pk": 673, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is Pycon?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "A yearly meet-up of Python enthusiasts\r\nAn alternate implementation ala IronPython and Jython\r\nA 3rd party debugging module"
+        }
+    }, 
+    {
+        "pk": 675, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is numpy?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "A 3rd party module\r\nA popular IDE written in Python\r\nA graphical debugger for python code"
+        }
+    }, 
+    {
+        "pk": 677, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is epidoc?", 
+            "difficulty": "A6", 
+            "type": 1, 
+            "choices": "An automatic documentation tool\r\nThe predecessor to Sphinx\r\nAn 3rd party module for converting office files between various formats"
+        }
+    }, 
+    {
+        "pk": 679, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Why was the ``buffer()`` built-in deprecated in Python 2.6?", 
+            "difficulty": "A1", 
+            "type": 1, 
+            "choices": "It was determined to be dangerous because it\r\nIt was made obsolete by internal refactoring of iteration code\r\nIt was replaced by the functools.buffer module"
+        }
+    }, 
+    {
+        "pk": 681, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is the default maximum recursion limit?", 
+            "difficulty": "A4", 
+            "type": 1, 
+            "choices": "platform dependent\r\n100\r\n1000\r\n10000"
+        }
+    }, 
+    {
+        "pk": 683, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is the default value for ``sys.tracebacklimit``", 
+            "difficulty": "A1", 
+            "type": 1, 
+            "choices": "1000\r\nplatform dependent\r\n100\r\n500"
+        }
+    }, 
+    {
+        "pk": 685, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Consider this script (named test.py):\r\n\r\n    #!/usr/bin/env python\r\n    import sys\r\n    print sys.argv[3]\r\n\r\nWhat is the output of the following command line operation?\r\n\r\n    python test.py foo bar --value=\"none\"", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "--value=\"none\"\r\nIndexError\r\nnone\r\n{'value': 'none'}"
+        }
+    }, 
+    {
+        "pk": 687, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Consider this script (named test.py):\r\n\r\n    #!/usr/bin/env python\r\n    import sys\r\n    print sys.argv[0]\r\n\r\nWhat is the output of the following command line operation?\r\n\r\n    python test.py foo bar --value=\"none\"", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "test.py\r\nfoo\r\npython\r\nIndexError\r\nTypeError"
+        }
+    }, 
+    {
+        "pk": 692, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "In python, whitespace is always ignored", 
+            "difficulty": "D", 
+            "type": 1, 
+            "choices": "False\r\nTrue"
+        }
+    }, 
+    {
+        "pk": 694, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "From whom does one buy an enterprise license for the use of Python in a commercial software product?", 
+            "difficulty": "D", 
+            "type": 1, 
+            "choices": "No one, python is freely licensed to the public for all uses\r\nPython Software Inc.\r\nZope Corporation"
+        }
+    }, 
+    {
+        "pk": 696, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which statement best describes SQLAlchemy?", 
+            "difficulty": "A9", 
+            "type": 1, 
+            "choices": "A 3rd party relational database ORM for python\r\nA lightweight relational database designed to replace a 'real' relational database during development\r\nA lightweight non-relational database designed to replace a 'real' non-relational database during development"
+        }
+    }, 
+    {
+        "pk": 698, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which statement accurately describes a ``collections.deque`` object?", 
+            "difficulty": "A9", 
+            "type": 1, 
+            "choices": "A container object designed to quickly reverse the order of it's contained objects\r\nA container object designed to quickly add and remove objects from the end of its object list\r\nA container object designed to quickly count the number of objects contained within"
+        }
+    }, 
+    {
+        "pk": 700, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which one of the following is **either not equivalent** to the below snippet, **or** the only one that **is equivalent** to the snippet below?\r\n\r\n    result = callable()", 
+            "difficulty": "A4", 
+            "type": 1, 
+            "choices": "``result = call(callable)``\r\n``result = callable.__call__()``\r\n``result = apply(callable)``\r\n"
+        }
+    }, 
+    {
+        "pk": 708, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which of the following way is **not** intended as a way to exit a python script?", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "``os.die()``\r\n``sys.exit()``\r\n``raise SystemExit``"
+        }
+    }, 
+    {
+        "pk": 710, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "How do you find the absolute value of a number?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "``abs(number)``\r\n``math.abs(number)``\r\nNot possible without 3rd party tools"
+        }
+    }, 
+    {
+        "pk": 712, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "In Python, functions are objects and can be passed around and manipulated like any other objects.", 
+            "difficulty": "D", 
+            "type": 1, 
+            "choices": "True\r\nFalse"
         }
     }
 ]

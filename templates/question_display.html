@@ -5,7 +5,8 @@
 {% block content %}
 #{{ session.total_asked }}
 <hr>
-<form action="{% url answer rq.pk %}" method="post">
+{% url answer rq.pk as url %}
+<form action="{{ url }}" method="post">
     {% csrf_token %}
     {{rq.html|safe}}
     <input type="submit">

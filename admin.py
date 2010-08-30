@@ -2,8 +2,9 @@ from django.contrib import admin
 from models import *
 
 class QuestionDataAdmin(admin.ModelAdmin):
-    list_display = ('text', 'display_type', )
-
+    list_display = ('text', 'display_type', 'difficulty')
+    list_filter = ('type',)
+    
     def display_type(self, obj):
         return obj.get_type_display()
     display_type.short_description = 'Question Type'

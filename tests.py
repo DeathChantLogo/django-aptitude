@@ -8,6 +8,8 @@ Replace these with more appropriate tests for your application.
 from django.test import TestCase
 from models import QuestionData
 
+from utils import parse_python_version
+
 class ParseTest(TestCase):
     def test_tagged_regular_parsing(self):
         """
@@ -20,7 +22,7 @@ class ParseTest(TestCase):
         
         parsed = q.parse()
         
-        self.assertEquals(parsed['right'], [u'b'])
+        self.assertEquals(parsed['right'], u'b')
         self.assertEquals(parsed['wrong'], [u'a', u'c'])
 
     
@@ -35,7 +37,7 @@ class ParseTest(TestCase):
         
         parsed = q.parse()
         
-        self.assertEquals(parsed['right'], [u'a'])
+        self.assertEquals(parsed['right'], u'a')
         self.assertEquals(parsed['wrong'], [u'b', u'c'])
         
     def test_snippet_choices(self):
@@ -50,7 +52,32 @@ class ParseTest(TestCase):
         
         parsed = q.parse()
         
-        self.assertEquals(parsed['right'], ['<pre>snippet\nright\nwoop</pre>'])
-        self.assertEquals(parsed['wrong'], ['<pre>wrong\nd\nw</pre>',
-                                            '<pre>a\nb\nc</pre>',
-                                            '<pre>g</pre>'])
+        self.assertEquals(parsed['right'], '<pre><code>snippet\nright\nwoop\n</code></pre>')
+        self.assertEquals(parsed['wrong'][0], '<pre><code>wrong\nd\nw\n</code></pre>')
+        self.assertEquals(parsed['wrong'][1], '<pre><code>a\nb\nc\n</code></pre>')
+        self.assertEquals(parsed['wrong'][2], '<pre><code>g\n</code></pre>')
+
+    def test_pythonversion_choices(self):
+        
+        ch = "2.6"
+        
+        q = QuestionData(text="guess the answer", choices=ch, type=4)
+        q.save()
+        
+        parsed = q.parse()
+        
+        self.assertEquals(parsed['right'], ['2.6'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
