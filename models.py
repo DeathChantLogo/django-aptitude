@@ -59,17 +59,16 @@ class AptSession(models.Model):
         right_wrong = a string either "right" or "wrong"
         difficulty = 'a1' or 'b' or 'c' or 'd' or 'a5', etc.
         """
-        
+                
         letter = difficulty[0]
         
-        if len(difficulty) == 1:
-            old = getattr(self, "%s_%s" % (letter.lower(), right_wrong))
-            setattr(self, "%s_%s" % (letter.lower(), right_wrong), old + 1)
-            
-        elif right_wrong == 'wrong':
+        old = getattr(self, "%s_%s" % (letter.lower(), right_wrong))
+        setattr(self, "%s_%s" % (letter.lower(), right_wrong), old + 1)
+              
+        if right_wrong == 'wrong' and letter.lower() == 'a':
             score = int(difficulty[1:])
             self.a_score -= score
-        
+            
         self.save()
     
     
@@ -79,13 +78,29 @@ class AptSession(models.Model):
         test is completed.
         """
         
-        if self.total_asked() >= settings.TOTAL_QUESTION_COUNT:
-            return None
+        # get a random float since app-engine backend does not sort in any way
+        rand = random.random()
         
-        index = random.randint(0, QuestionData.objects.count() - 1)
-        return QuestionData.objects.all()[index]
+        if self.total_answered() >= settings.TOTAL_QUESTION_COUNT:
+            return None # test complete
+        
+        elif (self.d_right + self.d_wrong) < settings.D_QUESTIONS_COUNT:
+            difficulty = 'D'
+        
+        elif (self.c_right + self.c_wrong) < settings.C_QUESTIONS_COUNT:
+            difficulty = 'C'
+            
+        elif (self.b_right + self.b_wrong) < settings.B_QUESTIONS_COUNT:
+            difficulty = 'B'
+            
+        elif (self.a_right + self.a_wrong) < settings.A_QUESTIONS_COUNT:
+            difficulty = 'A'
+            
+        questions = QuestionData.objects.filter(difficulty__startswith=difficulty)
+        index = int(questions.count() * rand)
+        return questions[index]
 
-    def total_asked(self):
+    def total_answered(self):
         """
         Returns the total number of questions already asked for this session
         """

@@ -123,7 +123,7 @@
         "pk": 118, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "According to PEP8, how should classes be named?", 
+            "text": "According to PEP8, how should **classes** be named?", 
             "difficulty": "B", 
             "type": 1, 
             "choices": "CapCase\r\ncamelCase\r\nunder_scores\r\nPEP8 does not specify"
@@ -273,7 +273,7 @@
         "pk": 148, 
         "model": "aptitude.questiondata", 
         "fields": {
-            "text": "Which version of python is this snippet NOT valid?\r\n(Note: without using any kind of ``from __future__ import ...``)?\r\n\r\n    for a in ['apple', 'bottom', 'jeans']:\r\n        print(a)", 
+            "text": "Which version of python is this snippet **not** valid?\r\n(Note: **without** using any kind of ``from __future__ import ...``)?\r\n\r\n    for a in ['apple', 'bottom', 'jeans']:\r\n        print(a)", 
             "difficulty": "A", 
             "type": 4, 
             "choices": "<2.6"
@@ -376,7 +376,7 @@
             "text": "Porting from Python 2.x code to 3.x", 
             "difficulty": "D", 
             "type": 1, 
-            "choices": "is difficult and a huge overtaking in most cases\r\nis fairly trivial in most cases\r\nhappens automatically at runtime\r\n"
+            "choices": "is difficult and a huge overtaking for large projects\r\nis fairly trivial in for both small and large projects\r\nhappens automatically at runtime\r\n"
         }
     }, 
     {
@@ -446,7 +446,7 @@
             "text": "What does the ``self`` built-in object do?", 
             "difficulty": "B", 
             "type": 1, 
-            "choices": "There is no ``self`` built-in object\r\nIt is used in instance method definitions to reference the instance object itself\r\nNothing, it is mainly used as a placeholder"
+            "choices": "There is no ``self`` built-in object\r\nIt is used in instance method definitions to automatically reference the instance object itself\r\nIt is meant to be used as a placeholder, and behaves exactly like the ``None`` object."
         }
     }, 
     {
@@ -536,7 +536,7 @@
             "text": "What does the 'L' stand for in the following snippet?\r\n\r\n    >>> obj.get_value()\r\n    562L", 
             "difficulty": "B", 
             "type": 1, 
-            "choices": "It is of the ``long`` type\r\nIt is of the ``Long`` type\r\nIt is of the ``LongInt`` type\r\n\r\n"
+            "choices": "It is of the ``long`` type\r\nIt is of the ``Long`` type\r\nIt is of the ``LongInt`` type"
         }
     }, 
     {
@@ -546,7 +546,7 @@
             "text": "Which best describes the ``<>`` operator?", 
             "difficulty": "A3", 
             "type": 1, 
-            "choices": "An alternate way to write \"!=\" in Python 2.x\r\nThe new and recommended way to write \"!=\" in Python 3.x\r\nAn operator thatdoes not exist in either 2.x or 3.x\r\n"
+            "choices": "An alternate way to write \"!=\" in Python 2.x\r\nThe new and recommended way to write \"!=\" in Python 3.x\r\nAn operator that does not and has never existed in any version of Python."
         }
     }, 
     {
@@ -595,8 +595,8 @@
         "fields": {
             "text": "Which of the following is a valid way to set the value of an object attribute that does not currently exist?", 
             "difficulty": "B", 
-            "type": 5, 
-            "choices": "setattr(obj, 'attribute', value)\r\nobj.attribute = value\r\nsetattr(obj, 'attribute', value, create=True)"
+            "type": 1, 
+            "choices": "``setattr(obj, 'attribute', value)``\r\n``obj.attribute = value``\r\n``setattr(obj, 'attribute', value, create=True)``"
         }
     }, 
     {
@@ -626,7 +626,7 @@
             "text": "What is the output of this snippet?\r\n\r\n    >>> True + 1", 
             "difficulty": "A3", 
             "type": 1, 
-            "choices": "2\r\nTypeError\r\n1\r\n\"True1\""
+            "choices": "2\r\n``TypeError``\r\n1\r\n'True1'"
         }
     }, 
     {
@@ -636,7 +636,7 @@
             "text": "What is Pycon?", 
             "difficulty": "B", 
             "type": 1, 
-            "choices": "A yearly meet-up of Python enthusiasts\r\nAn alternate implementation ala IronPython and Jython\r\nA 3rd party debugging module"
+            "choices": "A yearly meet-up of Python enthusiasts\r\nAn alternate interpreter implementation along the lines of IronPython and Jython\r\nA 3rd party debugging module"
         }
     }, 
     {
@@ -666,7 +666,7 @@
             "text": "Why was the ``buffer()`` built-in deprecated in Python 2.6?", 
             "difficulty": "A1", 
             "type": 1, 
-            "choices": "It was determined to be dangerous because it\r\nIt was made obsolete by internal refactoring of iteration code\r\nIt was replaced by the functools.buffer module"
+            "choices": "It was determined to be dangerous because it doesn't use python's standard ref-count system\r\nIt was made obsolete by internal refactoring of iteration code\r\nIt was replaced by the functools.buffer module"
         }
     }, 
     {
@@ -696,7 +696,7 @@
             "text": "Consider this script (named test.py):\r\n\r\n    #!/usr/bin/env python\r\n    import sys\r\n    print sys.argv[3]\r\n\r\nWhat is the output of the following command line operation?\r\n\r\n    python test.py foo bar --value=\"none\"", 
             "difficulty": "C", 
             "type": 1, 
-            "choices": "--value=\"none\"\r\nIndexError\r\nnone\r\n{'value': 'none'}"
+            "choices": "--value=\"none\"\r\nIndexError\r\nBlank (No output)\r\n{'value': 'none'}"
         }
     }, 
     {
@@ -787,6 +787,36 @@
             "difficulty": "D", 
             "type": 1, 
             "choices": "True\r\nFalse"
+        }
+    }, 
+    {
+        "pk": 819, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Which large corporation is known to use Python internally a lot?", 
+            "difficulty": "C", 
+            "type": 1, 
+            "choices": "Google\r\nMicrosoft\r\nCisco\r\nNo large Corporations use Python"
+        }
+    }, 
+    {
+        "pk": 857, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "What is a doctest?", 
+            "difficulty": "B", 
+            "type": 1, 
+            "choices": "A test written in a docstring that mimics the interactive interpreter syntax\r\nA module for creating unit tests in python\r\nA module for creating documentation by introspecting it's defined unit tests."
+        }
+    }, 
+    {
+        "pk": 860, 
+        "model": "aptitude.questiondata", 
+        "fields": {
+            "text": "Whats the difference between ``5/3`` in Python 2.x and 3.x?", 
+            "difficulty": "A10", 
+            "type": 1, 
+            "choices": "2.x truncates to return an integer, 3.x returns a float\r\nThey are the same\r\n3.x truncates to return an integer, 2.x returns a float"
         }
     }
 ]

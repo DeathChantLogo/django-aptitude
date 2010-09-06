@@ -1,24 +1,6 @@
 def parse_python_version(version, VERSIONS):
     """
     Parse Python versions. VERSIONS must be in order from lowest -> highest
-    
-    >>> VERSIONS = ['0.9', '1.0', '1.8', '2.0', '2.6', '2.7', '3.0', '3.1']
-    >>> parse_python_version('2.x', VERSIONS)
-    {'right': ['2.0', '2.6', '2.7'], 'wrong': ['0.9', '1.0', '1.8', '3.0', '3.1']}
-    >>> parse_python_version('3.x', VERSIONS)
-    {'right': ['3.0', '3.1'], 'wrong': ['0.9', '1.0', '1.8', '2.0', '2.6', '2.7']}
-    >>> parse_python_version('1.x', VERSIONS)
-    {'right': ['0.9', '1.0', '1.8'], 'wrong': ['2.0', '2.6', '2.7', '3.0', '3.1']}
-    >>> parse_python_version('>2.7', VERSIONS)
-    {'right': ['0.9', '1.0', '1.8'], 'wrong': ['2.0', '2.6', '2.7', '3.0', '3.1']}
-    >>> parse_python_version('2.7+', VERSIONS)
-    {'right': ['2.7', '3.0', '3.1'], 'wrong': ['0.9', '1.0', '1.8', '2.0', '2.6']}
-    >>> parse_python_version('>2.7', VERSIONS)
-    {'right': ['2.7', '3.0', '3.1'], 'wrong': ['0.9', '1.0', '1.8', '2.0', '2.6']}
-    >>> parse_python_version('<2.7', VERSIONS)
-    {'right': ['0.9', '1.0', '1.8', '2.0', '2.6'], 'wrong': ['2.7', '3.0', '3.1']}
-    >>> 1+1
-    3
     """
     
     greater = False
@@ -45,15 +27,15 @@ def parse_python_version(version, VERSIONS):
     
         if version == '2.x':
             return {'right': x2,
-                    'wrong': 0x + x1 + x3}
+                    'wrong': x0 + x1 + x3}
                     
         if version == '3.x':
             return {'right': x3,
-                    'wrong': 0x + x1 + x2}
+                    'wrong': x0 + x1 + x2}
                     
         if version == '1.x':
             return {'right': x1,
-                    'wrong': 0x + x2 + x3}
+                    'wrong': x0 + x2 + x3}
     
     if version[0] == '<':
         lesser = True
@@ -89,16 +71,3 @@ def parse_python_version(version, VERSIONS):
                 
     return {'right': [VERSIONS[answer_index]],
             'wrong': VERSIONS[:answer_index] + VERSIONS[answer_index+1:]}
-    
-
-
-
-
-
-
-
-
-
-
-
-

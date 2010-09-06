@@ -11,9 +11,13 @@ from models import QuestionData
 from utils import parse_python_version
 
 class ParseTest(TestCase):
+    """
+    General question parsing tests
+    """
+    
     def test_tagged_regular_parsing(self):
         """
-        Tests that rendering of regular test questions work when a <c>
+        Rendering of regular test questions work when a <c>
         tag is used to denote the correct answer
         """
         
@@ -28,13 +32,10 @@ class ParseTest(TestCase):
     
     def test_untagged_regular_parsing(self):
         """
-        Tests that rendering of regular test questions work when there is
-        no <c> tag
+        Rendering of regular test questions work when there is no <c> tag
         """
         
-        q = QuestionData(text="guess the answer", choices="a\nb\nc", type=1)
-        q.save()
-        
+        q = QuestionData.objects.create(text="ff", choices="a\nb\nc", type=1)
         parsed = q.parse()
         
         self.assertEquals(parsed['right'], u'a')
@@ -42,14 +43,12 @@ class ParseTest(TestCase):
         
     def test_snippet_choices(self):
         """
-        Test that the snippet rendered is working correctly
+        Snippet render is working correctly
         """
         
         ch = "snippet\nright\nwoop\n---\nwrong\nd\nw\n---\na\nb\nc\n---\ng"
         
-        q = QuestionData(text="guess the answer", choices=ch, type=5)
-        q.save()
-        
+        q = QuestionData.objects.create(text="ff", choices=ch, type=5)
         parsed = q.parse()
         
         self.assertEquals(parsed['right'], '<pre><code>snippet\nright\nwoop\n</code></pre>')
@@ -57,25 +56,60 @@ class ParseTest(TestCase):
         self.assertEquals(parsed['wrong'][1], '<pre><code>a\nb\nc\n</code></pre>')
         self.assertEquals(parsed['wrong'][2], '<pre><code>g\n</code></pre>')
 
-    def test_pythonversion_choices(self):
+    def test_strip_choices(self):
+        """
+        Strip all leading whitespace from each question before rendering
+        """
         
-        ch = "2.6"
+        ch = "\n\n \na\nb\nc\n\n    \n\n   \n"
         
-        q = QuestionData(text="guess the answer", choices=ch, type=4)
-        q.save()
-        
+        q = QuestionData.objects.create(text="ff", choices=ch, type=1)
         parsed = q.parse()
+
+        self.assertEquals(parsed['right'], u'a')
+        self.assertEquals(parsed['wrong'], [u'b', u'c'])
+
+class PythonParseTest(TestCase):
+    VERSIONS = ['0.9', '1.0', '1.8', '2.0', '2.6', '2.7', '3.0', '3.1']
+
+    def test_greater(self):
+        correct = {'right': ['2.7', '3.0', '3.1'],
+                   'wrong': ['0.9', '1.0', '1.8', '2.0', '2.6']}
+                   
+        r = parse_python_version('>2.7', self.VERSIONS)
+        self.assertEquals(r, correct)
+                              
+        r = parse_python_version('2.7+', self.VERSIONS)
+        self.assertEquals(r, correct)
         
-        self.assertEquals(parsed['right'], ['2.6'])
+    def test_x(self):
+        r = parse_python_version('2.x', self.VERSIONS)
+        self.assertEquals(r, {'right': ['2.0', '2.6', '2.7'],
+                              'wrong': ['0.9', '1.0', '1.8', '3.0', '3.1']})
 
+        r = parse_python_version('3.x', self.VERSIONS)
+        self.assertEquals(r, {'right': ['3.0', '3.1'],
+                              'wrong': ['0.9', '1.0', '1.8', '2.0', '2.6', '2.7']})
+        
+        r = parse_python_version('1.x', self.VERSIONS)
+        self.assertEquals(r, {'right': ['1.0', '1.8'],
+                              'wrong': ['0.9', '2.0', '2.6', '2.7', '3.0', '3.1']})
+                              
+    def test_lesser(self):
+        r = parse_python_version('<2.6', self.VERSIONS)
+        self.assertEquals(r, {'right': ['0.9', '1.0', '1.8', '2.0'],
+                              'wrong': ['2.6', '2.7', '3.0', '3.1']})
+                              
+    def test_single(self):
+        r = parse_python_version('2.6', self.VERSIONS)
+        self.assertEquals(r, {'right': ['2.6'],
+                              'wrong': ['0.9', '1.0', '1.8', '2.0',
+                                        '2.7', '3.0', '3.1']})
 
-
-
-
-
-
-
-
+        r = parse_python_version('0.9', self.VERSIONS)
+        self.assertEquals(r, {'right': ['0.9'],
+                              'wrong': ['1.0', '1.8', '2.0', '2.6',
+                                        '2.7', '3.0', '3.1']})
 
 
 

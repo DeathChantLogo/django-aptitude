@@ -1,3 +1,5 @@
+import random
+
 import markdown
 import utils
 
@@ -6,15 +8,15 @@ def convert_no_p(*a, **k):
     return markdown.Markdown.convert(*a, **k)[3:][:-4]
 setattr(markdown.Markdown, 'convert_no_p', convert_no_p)
 
-class GenericRenderer(object):
+class GenericParser(object):
     def __init__(self, text, choices, difficulty=50, mode='html4'):
-        self.choices_raw = choices
+        self.choices_raw = choices.strip()
         self.mode = mode
         self.md = markdown.Markdown(output_format=mode).convert
         self.text = text
         self.difficulty = difficulty
 
-class RegularRenderer(GenericRenderer):
+class RegularParser(GenericParser):
     
     def split_choices(self):
         
@@ -44,7 +46,7 @@ class RegularRenderer(GenericRenderer):
                 "right": correct_choice,
                 "wrong": wrong_choices}
                 
-class SnippetRegularRenderer(GenericRenderer):
+class SnippetRegularParser(GenericParser):
     
     def split_choices(self):
         """
@@ -92,15 +94,44 @@ class SnippetRegularRenderer(GenericRenderer):
                 "right": correct_choice,
                 "wrong": wrong_choices}
 
-class PythonVersionRenderer(GenericRenderer):
+class PythonVersionParser(GenericParser):
     VERSIONS = ['0.5', '0.7', '0.9.0', '1.0', '1.1', '1.2', '1.3', '1.4', '1.5',
                 '1.8', '2.0', '2.1', '2.2', '2.3', '2.4', '2.5', '2.6', '2.6.5',
                 '2.7', '3.0', '3.1', '3.2']
     
     def split_choices(self):
         ret = utils.parse_python_version(self.choices_raw, self.VERSIONS)
-        print ret
-        ret['text'] = self.md(self.text)
-        return ret
+        rand = random.random()
+        wrong_choice_count = 2  # the number of wrong choices to render
+        
+        text = self.md(self.text)
+        right = ret['right']
+        wrong = ret['wrong']
+        
+        number_of_right = len(right)
+        number_of_wrong = len(wrong)
+
+        # one random right answer
+        single_right = right[int(number_of_right*random.random())] 
+        
+        # a list random wrong answers (makes sure none are duplicated)
+        choices_wrong = []
+        while len(choices_wrong) < wrong_choice_count:
+            index = int(number_of_wrong*random.random())
+            rand_wrong = wrong[index]
+            if not rand_wrong in choices_wrong:
+                choices_wrong.append(rand_wrong)
+        
+        return {'text': text, 
+                'right': single_right,
+                'wrong': choices_wrong}
+            
+        
+        
+        
+        
+        
+        
+        
         
         

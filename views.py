@@ -6,13 +6,20 @@ from models import AptSession, RenderedQuestion, QuestionData
 
 @render_to('question_display.html')
 def question(request, session_pk, q_index):
-    session = AptSession.objects.get(pk=session_pk)
+    """
+    This view chooses the question, and then renders it.
+    """
     
+    session = AptSession.objects.get(pk=session_pk)
+    q_number = session.total_answered() + 1
     data = session.get_question_data()
+    question_id = data.pk
     
     if data:
         rq = data.render(session)
     else:
+        # the session will return None instead of a question when the session
+        # is complete
         url = reverse('session_complete', args=[session.pk])
         return HttpResponseRedirect(url)
 
@@ -36,7 +43,7 @@ def answer(request, rendered_pk):
     session.increment_right_wrong(right_wrong, difficulty)
     
     url = reverse('question', kwargs={'session_pk': session.pk,
-                                      'q_index': session.total_asked()})
+                                      'q_index': session.total_answered()})
     return HttpResponseRedirect(url)
 
 
@@ -60,14 +67,20 @@ def start_session(request):
         q = 1  # created a new session, go to first question
         
     else:
-        q = session.total_asked() + 1 # resuming session, return to next question
+        # resuming session, return to next question
+        q = session.total_answered() + 1
         
     url = reverse('question', kwargs={'session_pk': session.pk,
                                       'q_index': q})    
     return HttpResponseRedirect(url)
 
+
 @render_to('question_display.html')
 def test_question(request, pk, difficulty=50):
+    """
+    Render this question in the browser to make sure it looks OK.
+    """
+    
     data = QuestionData.objects.get(pk=pk)
     rq = data.render(session=None, difficulty=difficulty, test=True)
     return locals()

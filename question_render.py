@@ -21,7 +21,7 @@ class RenderMixin(object):
     
         try:
             parsed = self.parse(difficulty)
-        except:
+        except RuntimeError:
             parsed = {"text": self.text,
                       "right": 'correct (unable to parse question choices)',
                       "wrong": ['wrong', 'wrong', 'wrong']}
@@ -64,18 +64,13 @@ class RenderMixin(object):
         a dict with the correct choices and wrong choices in a list
         """
         
-        Renderer = globals()[self.get_type_display() + "Renderer"]
+        Parser = globals()[self.get_type_display() + "Parser"]
+
+        r = Parser(difficulty=difficulty,
+                   text=self.text,
+                   choices=self.choices)
         
-        r = Renderer(difficulty=difficulty,
-                     text=self.text,
-                     choices=self.choices)
-                            
         return r.split_choices()
-
-
-
-
-
 
 
 
